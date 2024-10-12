@@ -28,3 +28,14 @@ bunx --bun shadcn@2.1.0 init
 
 # New York, Neutral, CSS variables
 ```
+
+- shadcn ui component
+- button v2.1.0
+
+```bash
+bunx --bun shadcn@2.1.0 add button
+```
+
+- vscode extensions for tailwind `bradlc.vscode-tailwindcss`
+
+- tailwind config
