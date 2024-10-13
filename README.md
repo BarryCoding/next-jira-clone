@@ -85,7 +85,9 @@ bun run build
 - src/app/(auth)/sign-up/
   - page.tsx **convention** must be `export default`
 
+### auth chores
 
+- change font to inter
 
 
 ## TODO:
