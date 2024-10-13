@@ -69,12 +69,32 @@ bun run build
 
 ## auth screen
 
+### preparation
+
+- Ark browser 
+  - turn on: Dev mode
+- vscode extensions nextjs-snippets
+- [Logo](https://logoipsum.com/) `copy`
+  - public/logo.svg `paste`
+
+### auth file structure
+
+- src/app/(auth)/sign-in/
+  - page.tsx **convention** must be `export default`
+
+- src/app/(auth)/sign-up/
+  - page.tsx **convention** must be `export default`
+
+
+
 
 ## TODO:
 
 - [ ] no prettier ?
   - tailwind prettier plugin (sort classNames)
   - prettier and eslint related configuration
+- ESLint
+  - [ ] auto sort
 - [ ] no commit lint
   - husky
   - lint-stage
