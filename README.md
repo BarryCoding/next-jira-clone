@@ -47,3 +47,32 @@ bunx --bun shadcn@2.1.0 add
 
 # avatar badge calendar card chart checkbox dialog drawer dropdown-menu form input label popover scroll-area select separator sheet skeleton sonner table tabs textarea
 ```
+
+```bash
+bun run build
+# eslint errors!
+```
+
+### Fixing Eslint Error
+
+- calendar.tsx
+- chart.tsx
+- input.tsx
+- textarea.tsx
+
+```bash
+rm -rf .next/
+
+bun run build
+# check eslint error
+```
+
+## TODO:
+
+- [ ] no prettier ?
+  - tailwind prettier plugin (sort classNames)
+  - prettier and eslint related configuration
+- [ ] no commit lint
+  - husky
+  - lint-stage
+- [ ] turbo repo
