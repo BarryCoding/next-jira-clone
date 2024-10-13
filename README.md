@@ -67,6 +67,9 @@ bun run build
 # check eslint error
 ```
 
+## auth screen
+
+
 ## TODO:
 
 - [ ] no prettier ?
@@ -76,3 +79,25 @@ bun run build
   - husky
   - lint-stage
 - [ ] turbo repo
+
+## Future Plan
+
+- enterprise level
+  - typescript
+  - eslint
+  - prettier
+  - tailwind
+  - commitlint
+    - husky
+  - Next project 
+    - shadcn ui
+  - Nuxt project
+    - shadcn ui vue
+
+- [ ] CLI tool to scaffold my project
+
+- [ ] monorepo level
+- [ ] turbo repo
+
+- how to use CLI to build my own template of Next project
+- how to use CLI to build my own template of Nuxt project
