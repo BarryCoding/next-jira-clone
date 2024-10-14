@@ -13,6 +13,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       <div className='mx-auto max-w-screen-2xl p-4'>
         <nav className='flex justify-between items-center'>
           <Image src='/logo.svg' alt='Logo' width={180} height={37} priority />
+          {/* asChild is used to render the button as a link */}
           <Button asChild variant='secondary'>
             <Link href={isSignIn ? '/sign-up' : '/sign-in'}>{isSignIn ? 'Sign Up' : 'Login'}</Link>
           </Button>

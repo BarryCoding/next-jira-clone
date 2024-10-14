@@ -103,6 +103,16 @@ bun run build
 bun add react-icons
 ```
 
+### react-hook-form with zod
+
+- schema with zod
+- useForm
+- Form 
+  - FormField
+    - FormItem
+      - FormControl
+        - Input
+      - FormMessage
 
 ## TODO:
 
