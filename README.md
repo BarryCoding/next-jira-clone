@@ -89,6 +89,20 @@ bun run build
 
 - change font to inter
 
+### auth features components 
+
+- Shadcn UI components
+  - Card
+- custom UI components
+  - DottedSeparator
+
+- SignInCard 
+- SingUpCard 
+
+```bash
+bun add react-icons
+```
+
 
 ## TODO:
 
