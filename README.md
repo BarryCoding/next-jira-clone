@@ -121,7 +121,8 @@ bun add react-icons
 - Express alternative -> Hono
 
 ```bash
-bun add hono
+bun add hono@4.6.3
+bun add @hono/zod-validator@0.3.0
 ```
 
 - file `app/api/[[route]]/route.ts`
@@ -138,9 +139,16 @@ bun add @tanstack/react-query@5.59.0
   - as `query-provider.tsx`
   - then use in root layout
 
+### auth features
 
+- features/auth/server/route.ts
+  - `zValidator` as middleware
 
+- [RPC](https://hono.dev/docs/guides/rpc#rpc)
+  - chain route in api
+  - lib/rpc.ts
 
+- features/auth/api/use-login
 
 
 
