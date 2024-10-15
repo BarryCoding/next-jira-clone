@@ -14,8 +14,11 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from '@/component
 import { Input } from '@/components/ui/input'
 import Link from 'next/link'
 import { registerSchema } from '../schemas'
+import { useRegister } from '../api/use-register'
 
 export const SignUpCard = () => {
+  const { mutate } = useRegister()
+
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -25,8 +28,7 @@ export const SignUpCard = () => {
     },
   })
   const onSubmit = (values: z.infer<typeof registerSchema>) => {
-    console.log(`🔎 🔍 ~ onSubmit ~ values:`, values)
-    // mutate({ json: values })
+    mutate({ json: values })
   }
   return (
     <Card className='w-full h-full md:w-[487px] border-none shadow-none'>
