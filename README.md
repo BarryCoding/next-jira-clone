@@ -114,6 +114,40 @@ bun add react-icons
         - Input
       - FormMessage
 
+## Setup Hono API
+
+- [Hono](https://hono.dev/)
+
+- Express alternative -> Hono
+
+```bash
+bun add hono
+```
+
+- file `app/api/[[route]]/route.ts`
+
+### Tanstack query
+
+- end to end type-safety
+
+```bash
+bun add @tanstack/react-query@5.59.0
+```
+
+- [copy from](https://tanstack.com/query/latest/docs/framework/react/guides/advanced-ssr#advanced-server-rendering)
+  - as `query-provider.tsx`
+  - then use in root layout
+
+
+
+
+
+
+
+
+
+
+
 ## TODO:
 
 - [ ] no prettier ?
