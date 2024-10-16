@@ -1,11 +1,12 @@
 import { Hono } from 'hono'
 import { ID } from 'node-appwrite'
-import { setCookie } from 'hono/cookie'
+import { deleteCookie, setCookie } from 'hono/cookie'
 
 import { zValidator } from '@hono/zod-validator'
 import { loginSchema, registerSchema } from '../schemas'
 import { createAdminClient } from '@/lib/appwrite'
 import { AUTH_COOKIE } from '../constants'
+import { sessionMiddleware } from '@/lib/session-middleware'
 
 export const authHono = new Hono()
   .post('/login', zValidator('json', loginSchema), async (c) => {
@@ -36,6 +37,18 @@ export const authHono = new Hono()
       sameSite: 'strict',
       maxAge: 60 * 60 * 24 * 30,
     })
+
+    return c.json({ success: true })
+  })
+  .get('/current', sessionMiddleware, (c) => {
+    const user = c.get('user')
+
+    return c.json({ data: user })
+  })
+  .post('/logout', sessionMiddleware, async (c) => {
+    const account = c.get('account')
+    deleteCookie(c, AUTH_COOKIE)
+    await account.deleteSession('current')
 
     return c.json({ success: true })
   })

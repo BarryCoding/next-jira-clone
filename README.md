@@ -192,6 +192,18 @@ bun add server-only
   - createAdminClient
   - setCookie
 
+## Session Middleware
+
+- create a custom appwrite session middleware
+  - /current useCurrent
+  - /logout useLogout
+  - tested in Home page
+
+
+
+
+
+
 
 
 
