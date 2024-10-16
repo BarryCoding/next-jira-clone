@@ -150,7 +150,47 @@ bun add @tanstack/react-query@5.59.0
 
 - features/auth/api/use-login
 
+## Setup Appwrite & database
 
+```bash
+bun add node-appwrite@14.0.0
+```
+
+- [appwrite](https://appwrite.io/)
+  - get start with my github
+  - Springer Pro / free plan
+  - create project
+    - jira-clone
+
+- [appwrite docs auth](https://appwrite.io/docs/products/auth)
+  - [SSR login](https://appwrite.io/docs/products/auth/server-side-rendering)
+
+- appwrite platform jira-clone project
+  - Overview -> Integrate with your server
+  - click `API key +`
+    - jira-clone-api-key (name)
+    - auth->sessions.write (scopes)
+    - copy API key secret for `NEXT_APPWRITE_KEY`
+  - Settings
+    - Project ID `NEXT_PUBLIC_APPWRITE_PROJECT`
+    - API Endpoint `NEXT_PUBLIC_APPWRITE_ENDPOINT`
+
+```env
+NEXT_APPWRITE_KEY=
+NEXT_PUBLIC_APPWRITE_ENDPOINT=
+NEXT_PUBLIC_APPWRITE_PROJECT=
+```
+
+- lib/appwrite.ts
+  - server-only to add more safety
+
+```bash
+bun add server-only
+```
+
+- features/auth/server/route.ts
+  - createAdminClient
+  - setCookie
 
 
 
