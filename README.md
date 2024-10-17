@@ -206,7 +206,8 @@ bun add server-only
   - getCurrent
 - turn page to server component
 
-
+- server page need reload/refresh to getCurrent
+- add loading when submit
 
 
 
