@@ -199,8 +199,12 @@ bun add server-only
   - /logout useLogout
   - tested in Home page
 
+## Protect routes
 
-
+- user-button.tsx
+- appwrite.ts and queries.ts
+  - getCurrent
+- turn page to server component
 
 
 
