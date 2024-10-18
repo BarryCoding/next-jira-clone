@@ -1,3 +1,4 @@
+import { toast } from 'sonner'
 import { InferRequestType, InferResponseType } from 'hono'
 import { client } from '@/lib/rpc'
 import { useMutation } from '@tanstack/react-query'
@@ -19,7 +20,11 @@ export const useLogin = () => {
       return await response.json()
     },
     onSuccess: () => {
+      toast.success('Logged in')
       router.refresh()
+    },
+    onError: () => {
+      toast.error('Failed to log in')
     },
   })
 
