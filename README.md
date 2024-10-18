@@ -209,8 +209,42 @@ bun add server-only
 - server page need reload/refresh to getCurrent
 - add loading when submit
 
+## Workspace Form
 
+### Appwrite Dashboard
 
+- appwrite -> dashboard -> databases
+  - create database name `jira-clone`
+  - back to dashboard -> databases
+  - copy database ID to local env
+- back to database `jira-clone`
+  - create collection name `workspaces`
+  - copy `workspaces` collection ID to local env
+- back to collection `workspaces`
+  - create attribute 
+    - Type String
+      - Key name
+      - Size 256
+      - required
+    - Type String
+      - Key userId
+      - Size 50
+      - required
+- back to collection `workspaces` settings
+  - permissions -> add a role -> all users
+  - CRUD -> update
+
+### env config.ts
+
+> make all public env variable a exported const
+
+### feature workspaces
+
+- schemas.ts
+- server routes -> `[[...route]]`
+- use-create-workspace.ts with tanstack
+- create-workspace-form.tsx with react-hook-form
+  - test in page
 
 
 ## TODO:

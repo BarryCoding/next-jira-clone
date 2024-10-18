@@ -1,4 +1,5 @@
 import { authHono } from '@/features/auth/server/route'
+import { workspacesHono } from '@/features/workspaces/server/route'
 import { Hono } from 'hono'
 import { handle } from 'hono/vercel'
 
@@ -10,7 +11,7 @@ hono.get('/hello/:name', (c) => {
 })
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const routes = hono.route('/auth', authHono)
+const routes = hono.route('/auth', authHono).route('/workspaces', workspacesHono)
 export type AppType = typeof routes
 
 export const GET = handle(hono)
