@@ -1,35 +1,36 @@
 import { Hono } from 'hono'
-import { ID } from 'node-appwrite'
+import { ID, Query } from 'node-appwrite'
 import { zValidator } from '@hono/zod-validator'
 // import { endOfMonth, startOfMonth, subMonths } from 'date-fns'
 
-// import { MemberRole } from '@/features/members/types'
+import { MemberRole } from '@/features/members/types'
 // import { TaskStatus } from '@/features/tasks/types'
 // import { getMember } from '@/features/members/utils'
 
-// import { generateInviteCode } from '@/lib/utils'
+import { generateInviteCode } from '@/lib/utils'
 import { sessionMiddleware } from '@/lib/session-middleware'
-import { DATABASE_ID, IMAGES_BUCKET_ID, WORKSPACES_ID } from '@/config'
+import { DATABASE_ID, IMAGES_BUCKET_ID, MEMBERS_ID, WORKSPACES_ID } from '@/config'
 
 // import { Workspace } from '../types'
 import { createWorkspaceSchema } from '../schemas'
 
 export const workspacesHono = new Hono()
   .get('/', sessionMiddleware, async (c) => {
-    // const user = c.get('user')
+    const user = c.get('user')
     const databases = c.get('databases')
 
-    // const members = await databases.listDocuments(DATABASE_ID, MEMBERS_ID, [Query.equal('userId', user.$id)])
+    // REFACTOR: better naming: workspace_members
+    const members = await databases.listDocuments(DATABASE_ID, MEMBERS_ID, [Query.equal('userId', user.$id)])
 
-    // if (members.total === 0) {
-    //   return c.json({ data: { documents: [], total: 0 } })
-    // }
+    if (members.total === 0) {
+      return c.json({ data: { documents: [], total: 0 } })
+    }
 
-    // const workspaceIds = members.documents.map((member) => member.workspaceId)
+    const workspaceIds = members.documents.map((member) => member.workspaceId)
 
     const workspaces = await databases.listDocuments(DATABASE_ID, WORKSPACES_ID, [
-      // Query.orderDesc('$createdAt'),
-      // Query.contains('$id', workspaceIds),
+      Query.orderDesc('$createdAt'),
+      Query.contains('$id', workspaceIds),
     ])
 
     return c.json({ data: workspaces })
@@ -73,7 +74,6 @@ export const workspacesHono = new Hono()
     const user = c.get('user')
 
     const { name, image } = c.req.valid('form')
-    // const { name } = c.req.valid('form')
 
     let uploadedImageUrl: string | undefined
 
@@ -89,14 +89,15 @@ export const workspacesHono = new Hono()
       name,
       userId: user.$id, // using $id
       imageUrl: uploadedImageUrl,
-      // inviteCode: generateInviteCode(6),
+      inviteCode: generateInviteCode(6),
     })
 
-    // await databases.createDocument(DATABASE_ID, MEMBERS_ID, ID.unique(), {
-    //   userId: user.$id,
-    //   workspaceId: workspace.$id,
-    //   role: MemberRole.ADMIN,
-    // })
+    // add the user as a ADMIN member to the workspace
+    await databases.createDocument(DATABASE_ID, MEMBERS_ID, ID.unique(), {
+      userId: user.$id,
+      workspaceId: workspace.$id,
+      role: MemberRole.ADMIN,
+    })
 
     return c.json({ data: workspace })
   })

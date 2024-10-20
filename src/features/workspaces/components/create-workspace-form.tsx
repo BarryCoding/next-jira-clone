@@ -48,6 +48,7 @@ export const CreateWorkspaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
         onSuccess: ({ data }) => {
           console.log(`🔎 🔍 ~ onSubmit ~ data:`, data)
           form.reset()
+          // FIXME: also reset inputRef
           // router.push(`/workspaces/${data.$id}`)
         },
       }

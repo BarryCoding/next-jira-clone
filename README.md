@@ -277,9 +277,45 @@ bun add server-only
 - ui select
   - remove outline by `focus:ring-transparent`
 
+## workspace member
 
+- appwrite dashboard new collection `members`
+- copy `members` collection ID to local env
+- members collection 
+  - attribute -> create attribute 
+    - Type String
+      - Key userId
+      - Size 50
+      - required
+    - Type String
+      - Key workspaceId
+      - Size 50
+      - required
+    - Type Enum
+      - Key `role`
+      - Elements `ADMIN` `MEMBER`
+      - required
+  - setting -> permission
+    - all user CRUD
+- delete all workspaces(dirty data)
 
+- workspace
+  - hono route
+  - improve `create workspace` with member
+  - improve `get workspaces` by memberId
+  - useLogout clean `workspaces` cache
+- bug
+  - login without avatar
+  - add `queryClient.invalidateQueries({ queryKey: ['current'] })` when login / register
 
+- appwrite dashboard new collection `workspaces`
+  - attribute -> create attribute 
+    - Type String
+    - Key inviteCode
+    - Size 10
+    - required
+- generateInviteCode in util
+  - improve `create workspace` with inviteCode
 
 
 

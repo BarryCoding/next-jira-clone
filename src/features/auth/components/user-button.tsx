@@ -10,6 +10,7 @@ import { useLogout } from '../api/use-logout'
 
 export const UserButton = () => {
   const { data: user, isLoading } = useCurrent()
+  console.log(`🔎 🔍 ~ UserButton ~ user:`, user)
   const { mutate: logout } = useLogout()
 
   if (isLoading) {
