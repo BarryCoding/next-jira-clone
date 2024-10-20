@@ -246,6 +246,25 @@ bun add server-only
 - create-workspace-form.tsx with react-hook-form
   - test in page
 
+### add Image upload
+
+- appwrite dashboard Jira Clone -> storage
+  - create bucket name `images`
+  - copy bucket ID to local env
+  - settings
+    - permission all users CRUD
+    - Maximum file size `1M`
+    - Allowed file Extensions `jpg, jpeg, png, svg`
+- back to collection `workspaces`
+  - create attribute 
+    - Type String
+      - Key imageUrl
+      - Size 1400000
+
+- update workspaces
+  - schema 
+  - server route
+  - create-workspace-form with image input display and buttons
 
 ## TODO:
 
