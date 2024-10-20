@@ -15,25 +15,25 @@ import { DATABASE_ID, IMAGES_BUCKET_ID, WORKSPACES_ID } from '@/config'
 import { createWorkspaceSchema } from '../schemas'
 
 export const workspacesHono = new Hono()
-  // .get('/', sessionMiddleware, async (c) => {
-  //   const user = c.get('user')
-  //   const databases = c.get('databases')
+  .get('/', sessionMiddleware, async (c) => {
+    // const user = c.get('user')
+    const databases = c.get('databases')
 
-  //   const members = await databases.listDocuments(DATABASE_ID, MEMBERS_ID, [Query.equal('userId', user.$id)])
+    // const members = await databases.listDocuments(DATABASE_ID, MEMBERS_ID, [Query.equal('userId', user.$id)])
 
-  //   if (members.total === 0) {
-  //     return c.json({ data: { documents: [], total: 0 } })
-  //   }
+    // if (members.total === 0) {
+    //   return c.json({ data: { documents: [], total: 0 } })
+    // }
 
-  //   const workspaceIds = members.documents.map((member) => member.workspaceId)
+    // const workspaceIds = members.documents.map((member) => member.workspaceId)
 
-  //   const workspaces = await databases.listDocuments(DATABASE_ID, WORKSPACES_ID, [
-  //     Query.orderDesc('$createdAt'),
-  //     Query.contains('$id', workspaceIds),
-  //   ])
+    const workspaces = await databases.listDocuments(DATABASE_ID, WORKSPACES_ID, [
+      // Query.orderDesc('$createdAt'),
+      // Query.contains('$id', workspaceIds),
+    ])
 
-  //   return c.json({ data: workspaces })
-  // })
+    return c.json({ data: workspaces })
+  })
   // .get('/:workspaceId', sessionMiddleware, async (c) => {
   //   const user = c.get('user')
   //   const databases = c.get('databases')

@@ -266,6 +266,24 @@ bun add server-only
   - server route
   - create-workspace-form with image input display and buttons
 
+## workspace switcher
+
+- update workspaces
+  - Hono server route `get /`
+  - new `use-get-workspaces`
+  - components `workspace-avatar`
+- common components
+  - `workspaces-switcher` used in `sidebar`
+- ui select
+  - remove outline by `focus:ring-transparent`
+
+
+
+
+
+
+
+
 ## TODO:
 
 - [ ] no prettier ?
