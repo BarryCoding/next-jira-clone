@@ -317,6 +317,12 @@ bun add server-only
 - generateInviteCode in util
   - improve `create workspace` with inviteCode
 
+## workspaceId page
+
+- `[workspaceId]/page.tsx`
+- modify `WorkspaceSwitcher`
+- hooks `useWorkspaceId`
+- queries for workspace
 
 
 

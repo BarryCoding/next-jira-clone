@@ -1,9 +1,9 @@
 'use client'
 
-// import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { RiAddCircleFill } from 'react-icons/ri'
 
-// import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
+import { useWorkspaceId } from '@/features/workspaces/hooks/use-workspace-id'
 import { useGetWorkspaces } from '@/features/workspaces/api/use-get-workspaces'
 import { WorkspaceAvatar } from '@/features/workspaces/components/workspace-avatar'
 // import { useCreateWorkspaceModal } from "@/features/workspaces/hooks/use-create-workspace-modal";
@@ -11,14 +11,14 @@ import { WorkspaceAvatar } from '@/features/workspaces/components/workspace-avat
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 
 export const WorkspaceSwitcher = () => {
-  // const workspaceId = useWorkspaceId();
-  // const router = useRouter()
+  const workspaceId = useWorkspaceId()
+  const router = useRouter()
   const { data: workspaces } = useGetWorkspaces()
   // const { open } = useCreateWorkspaceModal();
 
-  // const onSelect = (id: string) => {
-  //   router.push(`/workspaces/${id}`)
-  // }
+  const onSelect = (id: string) => {
+    router.push(`/workspaces/${id}`)
+  }
 
   return (
     <div className='flex flex-col gap-y-2'>
@@ -30,8 +30,7 @@ export const WorkspaceSwitcher = () => {
           className='size-5 text-neutral-500 cursor-pointer hover:opacity-75 transition'
         /> */}
       </div>
-      {/* <Select onValueChange={onSelect} value={workspaceId}> */}
-      <Select>
+      <Select onValueChange={onSelect} value={workspaceId}>
         {/* LEARN  focus:ring-transparent to get rid of the focus ring */}
         <SelectTrigger className='w-full bg-neutral-200 font-medium p-1 focus:ring-transparent'>
           <SelectValue placeholder='No workspace selected' />
